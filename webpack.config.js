@@ -8,9 +8,9 @@ var helpers = require('./helpers')
 
 module.exports = {
     entry: {
-        'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+        'polyfills': './App/src/polyfills.ts',
+    'vendor': './App/src/vendor.ts',
+    'app': './App/src/index.ts'
     },
     output: {
         filename: 'scripts/[name].js',
@@ -65,11 +65,9 @@ module.exports = {
     },
     plugins: [
          new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      helpers.root('./App'), // location of your src
-      {} // a map of your routes
-    ),
+            /angular(\\|\/)core(\\|\/)@angular/,
+            path.resolve(__dirname, '/App')
+        ),
         new HtmlWebpackPlugin({
             template: './App/index.html',
             cache: false,
