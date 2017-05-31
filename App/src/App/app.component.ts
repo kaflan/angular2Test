@@ -1,4 +1,4 @@
-import { Component,  OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 import { SocketService } from './app.service';
 
@@ -15,7 +15,7 @@ import { SocketService } from './app.service';
     ]
 })
 
-export class AppComponent implements  OnInit, OnDestroy, OnChanges {
+export class AppComponent {
     private observable : Subscription;
     public users: Array<object>
     constructor (private socket: SocketService ) {
@@ -28,26 +28,5 @@ export class AppComponent implements  OnInit, OnDestroy, OnChanges {
                 console.log('Error', error);
             }
         );
-        this.socket.on('users_disconect').subscribe(
-              (data) => {
-                this.users = data;
-                console.log('User disconect', this.users);
-            },
-            (error) => {
-                console.log('Error', error);
-            }
-        )
-
-    }
-    ngOnInit() {
-       
-
-    }
-    ngOnDestroy() {
-        // this.SocketService.deleteUser();
-        // this.observable.unsubscribe();
-    }
-    ngOnChanges() {
-
     }
  }
