@@ -5,7 +5,7 @@ import * as io from "socket.io-client";
 @Injectable()
 
 export class SocketService {
-    private host: string = 'http://localhost:3000';
+    private host: string = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port;
     private socket: any;
     private connected() {
         console.log('Connected');
