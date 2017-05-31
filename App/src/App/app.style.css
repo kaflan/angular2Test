@@ -1,0 +1,13 @@
+li {
+    display: block;
+    border: 2px solid black;
+    margin: 20px;
+    width: 80%;
+}
+.user-image{
+    margin-left: 20px;
+}
+.user-text{
+    /*float: right;*/
+    font-size: 25px;
+}

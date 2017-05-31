@@ -9,12 +9,7 @@ const http = require('http');
 const compiler = require('webpack')(config);
 const webpackMiddleware = createWebpackMiddleware(compiler, config);
 const cors = require('cors');
-var clients = [];
-let users = [{
-    user_id: 0,
-    user_name: faker.name.firstName(),
-    user_image: faker.image.avatar()
-}];
+let users = [];
 
 const createUser = (id = 1) => {
     return {
@@ -49,13 +44,11 @@ server.listen(PORT);
 
 io.on('connection', (socket) => {
     // <insert relevant code here>
-    clients.push(socket);
     users.push(createUser(socket.id));
     io.emit('users',  users );
     // socket.send(users);
     socket.on('disconnect', function () {
-        clients.splice(clients.indexOf(socket), 1);
-        users.splice(clients.indexOf(socket.id), 1);
+        users.splice(users.indexOf(socket.id), 1);
         io.emit('users', users);
     });
 });
