@@ -1,0 +1,13 @@
+        <div class="user-wrapper">
+            <p class="user-wrapper__title"> Active Users</p>
+            <ul>
+             <li *ngFor="let user of users" class="users">
+                <div>
+                    <div class="user-container">
+                    <img class="user-container__image" [src]="user.user_image" [title]="user.user_name" />
+                    <p class="user-container__text">{{user.user_name}}</p>
+                    </div>
+                </div>
+             </li>
+            </ul>
+        </div>

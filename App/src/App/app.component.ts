@@ -1,24 +1,12 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { SocketService } from './app.service';
+<any>require('reset-css/reset.css');
 
 @Component({
     selector: 'app',
     host: { 'window:beforeunload': 'doSomething' },
-    template: `
-        <div class="wrapper">
-            <p> Active Users</p>
-            <ul>
-             <li *ngFor="let user of users" class="users">
-                <div>
-                    <p class="user-text">
-                    <img [src]="user.user_image" [title]="user.user_name" class="user-image" />
-                    {{user.user_name}} </p>
-                </div>
-             </li>
-            </ul>
-        </div>
-    `,
+    templateUrl: './src/App/app.layout.html',
     styleUrls: [ './src/App/app.style.css' ],
     providers: [
         SocketService
