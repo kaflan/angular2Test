@@ -5,7 +5,6 @@ import { SocketService } from './app.service';
 
 @Component({
     selector: 'app',
-    host: { 'window:beforeunload': 'doSomething' },
     templateUrl: './src/App/app.layout.html',
     styleUrls: [ './src/App/app.style.css' ],
     providers: [

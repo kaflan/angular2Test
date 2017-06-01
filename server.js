@@ -48,7 +48,8 @@ io.on('connection', (socket) => {
     io.emit('users',  users );
     // socket.send(users);
     socket.on('disconnect', function () {
-        users.splice(users.indexOf(socket.id), 1);
+        let filterUser = users.filter((user)=> {return user.user_id !== socket.id});
+        users = filterUser;
         io.emit('users', users);
     });
 });
